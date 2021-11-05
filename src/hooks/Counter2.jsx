@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
+import useDocumentTitle from "./customHooks/useDocumentTitle";
 
 const Counter2 = () => {
   // const array = useState(0);
@@ -11,13 +13,8 @@ const Counter2 = () => {
   componentDidMount()
   componentDidUpdate()
   componentWillUnmount() */
-  useEffect(() => {
-    document.title = `${name} has clicked ${count} times!`;
-    console.log("use Effect");
-    return () => {
-      console.log("Clean UP");
-    };
-  });
+
+  useDocumentTitle(`${name} has clicked ${count} times!`);
 
   console.log("render Counter2");
   return (
