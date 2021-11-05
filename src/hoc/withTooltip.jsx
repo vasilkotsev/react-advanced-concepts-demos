@@ -1,7 +1,7 @@
 import React from "react";
 
 function withTooltip(Component) {
-  return class WithTooltip extends Component {
+  return class WithTooltip extends React.Component {
     state = {
       showTooltip: false
     };
@@ -16,12 +16,14 @@ function withTooltip(Component) {
 
     render() {
       return (
-        <Component
-          {...this.props}
-          showTooltip={this.state.showTooltip}
-          onMouseOver={this.handleMouseOver}
-          onMouseOut={this.handleMouseOut}
-        />
+        <div>
+          <Component
+            {...this.props}
+            showTooltip={this.state.showTooltip}
+            onMouseOver={this.handleMouseOver}
+            onMouseOut={this.handleMouseOut}
+          />
+        </div>
       );
     }
   };
