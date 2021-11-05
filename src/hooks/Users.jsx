@@ -1,20 +1,13 @@
-import React, { useState, Fragment, useEffect } from "react";
-import axios from "axios";
+import React, { useState, Fragment } from "react";
+
+import useGetAndSetData from "./customHooks/useGetAndSetData";
 
 function Users() {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    //adds async function, used as a wrapper for the request, because the 1st useEffect parameter cannot be async function
-    async function getUsers() {
-      const { data } = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      setUsers(data);
-    }
-    //call async function explicitly
-    getUsers();
-  });
+  //custom hook call
+  useGetAndSetData(setUsers);
+
   return (
     <Fragment>
       <ul>

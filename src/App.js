@@ -4,6 +4,7 @@ import "./App.css";
 // import Counter1 from "./hooks/Counter1";
 // import Counter2 from "./hooks/Counter2";
 import Users from "./hooks/Users";
+import Monsters from "./hooks/Monsters";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       {/* <Counter2 /> */}
       {/* <Genre tooltipText={"GENRE tooltip"} /> */}
       <Users />
+      <Monsters />
     </div>
   );
 }
