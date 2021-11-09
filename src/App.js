@@ -1,6 +1,7 @@
 import React from "react";
 import MoviePage from "./context/MoviePage";
 import UserContext from "./context/userContext";
+import Login from "./context/Login";
 import "./App.css";
 // import Movie from "./hoc/Movie";
 // import Genre from "./hoc/Genre";
@@ -11,9 +12,13 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    currentUser: {
-      name: "Vasko"
-    }
+    currentUser: null
+  };
+
+  handleLoggedIn = username => {
+    console.log("Getting the user: " + username); //imitate server call
+    const user = { name: "Vasko" }; //getting the user object
+    this.setState({ currentUser: user });
   };
 
   render() {
@@ -26,8 +31,14 @@ class App extends React.Component {
         <Monsters /> */
 
       /* return Provider component and pass currentUser down in component tree with special prop "value*/
-      <UserContext.Provider value={this.state.currentUser}>
+      <UserContext.Provider
+        value={{
+          currentUser: this.state.currentUser,
+          onLoggedIn: this.handleLoggedIn
+        }}
+      >
         <MoviePage />
+        <Login />
       </UserContext.Provider>
     );
   }
