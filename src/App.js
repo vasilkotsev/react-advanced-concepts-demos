@@ -3,6 +3,7 @@ import MoviePage from "./context/MoviePage";
 import UserContext from "./context/userContext";
 import Login from "./context/Login";
 import "./App.css";
+import CartContext from "./context/cartContext";
 // import Movie from "./hoc/Movie";
 // import Genre from "./hoc/Genre";
 // import Counter1 from "./hooks/Counter1";
@@ -31,15 +32,17 @@ class App extends React.Component {
         <Monsters /> */
 
       /* return Provider component and pass currentUser down in component tree with special prop "value*/
-      <UserContext.Provider
-        value={{
-          currentUser: this.state.currentUser,
-          onLoggedIn: this.handleLoggedIn
-        }}
-      >
-        <MoviePage />
-        <Login />
-      </UserContext.Provider>
+      <CartContext.Provider value={{ cart: [] }}>
+        <UserContext.Provider
+          value={{
+            currentUser: this.state.currentUser,
+            onLoggedIn: this.handleLoggedIn
+          }}
+        >
+          <MoviePage />
+          <Login />
+        </UserContext.Provider>
+      </CartContext.Provider>
     );
   }
 }
