@@ -9,9 +9,7 @@ function MovieRow() {
   console.log("cartContext: ", cartContext);
   return (
     <div>
-      <p>
-        Movie Row {userContext.currentUser ? userContext.currentUser.name : ""}
-      </p>
+      <p>Movie Row {userContext.currentUser?.name ?? ""}</p>
     </div>
   );
 }

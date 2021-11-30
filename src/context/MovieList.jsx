@@ -12,8 +12,7 @@ class MovieList extends Component {
       <UserContext.Consumer>
         {userContext => (
           <div>
-            Movie List{" "}
-            {userContext.currentUser ? userContext.currentUser.name : ""}
+            Movie List {userContext.currentUser?.name ?? ""}
             <MovieRow />
           </div>
         )}
